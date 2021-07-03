@@ -1,0 +1,7 @@
+.env
+
+#editor
+.idea
+
+#packages
+node_modules
