@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js",
-    "start:prod": "node ./index.js"
+    "start:prod": "pm2 start ./index.js --name \"boco-discord-bot\" "
   },
   "author": "Thitiwut Somsa <kizzaraiva@gmail.com>",
   "license": "ISC",
