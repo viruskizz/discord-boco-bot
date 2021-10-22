@@ -21,23 +21,26 @@ module.exports = {
     channel.join()
       .then(connection => {
         if(info.sound) {
-          console.log('SOUND!!');
           const startStream = ytdl(info.sound, { filter: 'audioonly' });
           connection.play(startStream, streamOptions)
             .on('start', () => {
               this.showDescription(message, info);
+              // message.reply('Boko BOT is playing the music :musical_keyboard:');
             });
         }
-        setTimeout(() => {
-          const endStream = ytdl(info.notify, { filter: 'audioonly' });
-          connection.play(endStream, streamOptions)
-            .on('start', () => {
-              this.showEnded(message, info);
-            }).on('finish', () => {
-              channel.leave();
-          });
-        }, info.time * 60 * 1000)
-    });
+        if (info.time && info.notify) {
+          setTimeout(() => {
+            const endStream = ytdl(info.notify, { filter: 'audioonly' });
+            connection.play(endStream, streamOptions)
+              .on('start', () => {
+                this.showEnded(message, info);
+              }).on('finish', () => {
+                channel.leave();
+            });
+          }, parseInt(info.time, 10) * 60 * 1000)
+        }
+      }).catch(e => console.log('Error: ', e));
+    return;
   },
 
   // private
@@ -53,7 +56,7 @@ module.exports = {
         .addField('ใช้เวลา', `${info.time} นาที`)
         .addField('เริ่มเวลา', now.toFormat('HH:mm'), true)
         .addField('สิ้นสุด', now.plus({minutes: info.time}).toFormat('HH:mm'), true)
-        .setImage('https://meditationsphere.com/wp-content/uploads/2020/03/how-many-times-a-day-should-i-meditate-800x488.jpg')
+        .setImage('https://i.pinimg.com/originals/be/51/8e/be518e826ab86ba8ed5f98c672c76caa.jpg')
     });
   },
   // private
@@ -63,7 +66,7 @@ module.exports = {
         .setColor('RED')
         .setTitle('Meditation event has ended')
         .setDescription('ขอบคุณทุกท่านที่เข้าร่วมกิจกรรม แล้วพบกันอีกครั้งในรอบต่อ')
-        .setThumbnail('https://meditationsphere.com/wp-content/uploads/2020/03/how-many-times-a-day-should-i-meditate-800x488.jpg')
+        .setThumbnail('https://i.pinimg.com/originals/be/51/8e/be518e826ab86ba8ed5f98c672c76caa.jpg')
         .addField('ใช้เวลา', `${info.time} นาที`, true)
         .addField('ผู้เข้าร่วม', `${message.member.voice.channel.members.size - 1} คน`, true)
         .setTimestamp()
