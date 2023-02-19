@@ -1,4 +1,5 @@
 .env
+.env.dev
 configs/discord-318808-be4c2e1fe37b.json
 #editor
 .idea

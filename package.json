@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js",
+    "start": "set NODE_ENV=development && nodemon ./index.js",
     "start:prod": "pm2 start ./index.js --name \"discord-boco-bot\" "
   },
   "author": "Thitiwut Somsa <kizzaraiva@gmail.com>",
