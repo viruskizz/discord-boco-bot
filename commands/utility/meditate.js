@@ -14,6 +14,7 @@ module.exports = {
     } else {
       channel = message.member.voice.channel;
     }
+    console.log(info)
     if(!channel) { message.reply(`:x: Bot haven't find the voice channel`); return; }
     if(info.sound && !ytdl.validateURL(info.sound)) { message.reply(`:x: invalid youtube start sound url`); return; }
     if(info.notify && !ytdl.validateURL(info.notify)) { message.reply(`:x: invalid youtube notify sound url`); return; }
@@ -25,18 +26,23 @@ module.exports = {
           connection.play(startStream, streamOptions)
             .on('start', () => {
               this.showDescription(message, info);
-              // message.reply('Boko BOT is playing the music :musical_keyboard:');
             });
         }
-        if (info.time && info.notify) {
+        if (info.time) {
           setTimeout(() => {
-            const endStream = ytdl(info.notify, { filter: 'audioonly' });
-            connection.play(endStream, streamOptions)
+            if (info.notify) {
+              const endStream = ytdl(info.notify, { filter: 'audioonly' });
+              connection.play(endStream, streamOptions)
               .on('start', () => {
                 this.showEnded(message, info);
-              }).on('finish', () => {
+              })
+              .on('finish', () => {
                 channel.leave();
-            });
+              });
+            } else {
+              this.showEnded(message, info);
+              channel.leave();
+            }
           }, parseInt(info.time, 10) * 60 * 1000)
         }
       }).catch(e => console.log('Error: ', e));
