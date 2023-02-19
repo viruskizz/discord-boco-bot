@@ -10,10 +10,10 @@ module.exports = {
     if(!youtubeUrl.startsWith('http')) { return; }
     const streamOptions = { seek: 0, volume: 0.8 };
     const stream = ytdl(youtubeUrl, { filter: 'audioonly' });
-    if(message.guild.voice && message.guild.voice.channelID) {
-      message.guild.voice.connection.play(stream, streamOptions);
-      return;
-    }
+    // if(message.guild.voice && message.guild.voice.channelID) {
+    //   message.guild.voice.connection.play(stream, streamOptions);
+    //   return;
+    // }
     if(!message.member.voice.channelID) { message.reply(`:x: User haven't joined the voice channel`); return; }
     const voiceChannel = message.member.voice.channel;
     voiceChannel.join().then(connection => {
