@@ -4,7 +4,7 @@ module.exports = {
   name: 'play',
   args: true,
   usage: '<youtube url>',
-  description: `Play Boko's music player`,
+  description: `Play Boco's music player`,
   execute(message, args) {
     const youtubeUrl = args[0];
     if(!youtubeUrl.startsWith('http')) { return; }
