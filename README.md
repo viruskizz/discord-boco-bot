@@ -86,7 +86,7 @@ Bocobot meditation mode. Boco will play a meditate song and sleep until the end 
 
 **Example:**
 ```
-bc.meditate --sound=https://www.youtube.com/watch?v=vSXRQMcoofs&t --time=20
+bc.meditate --sound=https://www.youtube.com/watch?v=vSXRQMcoofs&t --notify=https://www.youtube.com/watch?v=x3ph521e6RI --time=20
 ```
 
 ### Notify
