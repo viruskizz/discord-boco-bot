@@ -2,4 +2,6 @@
 
 Boco is nickname of Chocobo in final fantasy series. He deserve any perform for owner.
 
-_~Just for fun and Hobbie~_
+Just moved from `Gitlab`
+
+_\~Just for fun and Hobbie\~_
