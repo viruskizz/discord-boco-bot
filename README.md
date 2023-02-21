@@ -59,14 +59,14 @@ Boco bot use prefix `??` to overlap command avoidance.
 
 Play Boco's music player. player support only single playing song.
 
-- `??play` <youtube url>: เล่นเพลง Youtube
-- `??add` <youtube url>: เพิ่มเพลง Youtube ลงใน playlist
-- `??list`: แสดงรายการ playlist
-- `??next` : เล่นเพลงถัดไปใน playlist
-- `??pause` : หยุดเล่นเพลง
-- `??resume` : เล่นเพลงต่อ
-- `??stop` : หยุดการเล่นเพลง
-- `??leave` : นำบอทออกจากห้อง
+- `??play` <youtube url>: Play Youtube Music
+- `??add` <youtube url>: Add Youtube music to playlist
+- `??list`: Show playlist
+- `??next` : play next music
+- `??pause` : pause music
+- `??resume` : resume music
+- `??stop` : stop music
+- `??leave` : disconnect bot from voice channel
 
 **Example:**
 ```
