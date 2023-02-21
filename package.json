@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_ENV=development && nodemon ./index.js",
+    "restart:prod": "pm2 restart discord-boco-bot",
+    "stop:prod": "pm2 stop discord-boco-bot",
     "start:prod": "pm2 start ./index.js --name \"discord-boco-bot\" "
   },
   "author": "Thitiwut Somsa <kizzaraiva@gmail.com>",
