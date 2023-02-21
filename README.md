@@ -19,7 +19,7 @@ This bot is writen with nodejs and some global package.
 
 ```
 DISCORD_BOT_TOKEN=ABCDE123456
-PREFIX=bc.
+PREFIX=??
 ```
 
 3. run bot
@@ -38,7 +38,7 @@ npm run start:prod
 Anyway, You can invite my bot to your own server without any additional configuration. just enter follow this url.
 
 ```
-https://discord.com/api/oauth2/authorize?client_id=0000000000&permissions="boco bot need to enjoy your server"&scope=bot%20applications.commands
+https://discord.com/api/oauth2/authorize?client_id=0000000000&permissions="boco%20bot%20need%20to%20enjoy%20your%20server"&scope=bot%20applications.commands
 ```
 
 Contact me directly in discord: `Araiva#1851`
@@ -49,26 +49,29 @@ There are 2 main features of this bot.
 1. Player
 2. Utility
 
-Boco bot use prefix `bc.` to overlap command avoidance.
+Boco bot use prefix `??` to overlap command avoidance.
 ### Command pattern
 ```
-bc.<command> <argument> <option>
+??<command> <argument> <option>
 ```
 
 ### 1. Player Feature
 
 Play Boco's music player. player support only single playing song.
 
-- `bc.play` <youtube url>: เล่นเพลง Youtube
-- `bc.pause` : หยุดเล่นเพลง
-- `bc.resume` : เล่นเพลงต่อ
-- `bc.stop` : หยุดการเล่นเพลง
-- `bc.leave` : นำบอทออกจากห้อง
+- `??play` <youtube url>: เล่นเพลง Youtube
+- `??add` <youtube url>: เพิ่มเพลง Youtube ลงใน playlist
+- `??list`: แสดงรายการ playlist
+- `??next` : เล่นเพลงถัดไปใน playlist
+- `??pause` : หยุดเล่นเพลง
+- `??resume` : เล่นเพลงต่อ
+- `??stop` : หยุดการเล่นเพลง
+- `??leave` : นำบอทออกจากห้อง
 
 **Example:**
 ```
-bc.play https://www.youtube.com/watch?v=kSXxLelW-hI
-bc.stop
+??play https://www.youtube.com/watch?v=kSXxLelW-hI
+??stop
 ```
 
 ### 2. Utility Feature
@@ -86,7 +89,7 @@ Bocobot meditation mode. Boco will play a meditate song and sleep until the end 
 
 **Example:**
 ```
-bc.meditate --sound=https://www.youtube.com/watch?v=vSXRQMcoofs&t --notify=https://www.youtube.com/watch?v=x3ph521e6RI --time=20
+??meditate --sound=https://www.youtube.com/watch?v=vSXRQMcoofs&t --notify=https://www.youtube.com/watch?v=x3ph521e6RI --time=20
 ```
 
 ### Notify
