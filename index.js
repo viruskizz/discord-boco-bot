@@ -1,6 +1,6 @@
 console.log(process.env.NODE_ENV);
 require('dotenv').config({path: process.env.NODE_ENV === 'development' ? '.env.dev' : '.env'});
-// require('./cron');
+global.playlist = require('./databases/playlist');
 const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
