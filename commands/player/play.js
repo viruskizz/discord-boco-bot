@@ -37,7 +37,15 @@ module.exports = {
     const guildId = message.channel.guild.id;
     const playlist = await playlistDb.get(guildId);
     const streamOptions = { seek: 0, volume: 0.8 };
-    const stream = ytdl(playlist.list[0].videoUrl, { filter: 'audioonly' });
+    const stream = ytdl(playlist.list[0].videoUrl, {
+      filter: 'audioonly',
+      fmt: "mp3",
+      highWaterMark: 1 << 62,
+      liveBuffer: 1 << 62,
+      dlChunkSize: 0, //disabling chunking is recommended in discord bot
+      bitrate: 128,
+      quality: "lowestaudio",
+    });
     connection.play(stream, streamOptions)
       .on('start', () => {
         playlistDb.updatePlayState(guildId, true);
