@@ -17,7 +17,7 @@ module.exports = {
     }
     if (youtubeUrl && playlist.list.length >= 0) {
       if(!ytdl.validateURL(youtubeUrl)) { return; }
-      await addPlaylist(youtubeUrl);
+      await playlistDb.add(guildId, youtubeUrl);
       if (playlist.playing && playlist.list.length > 1) { return; }
     }
     if(!message.member.voice.channelID) { message.reply(`:x: User haven't joined the voice channel`); return; }
