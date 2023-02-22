@@ -1,19 +1,21 @@
 const {convertSecondToString} = require('../../utils/transform.util');
-const {playlist} = global;
+const playlistDb = require('../../databases/playlist');
 
 module.exports = {
   name: 'list',
   description: `list Boco's Music Playlist`,
-  execute(message, args) {
-    let embed = this.setEmbedMessage();
+  async execute(message, args) {
+    const guildId = message.channel.guild.id;
+    let embed = await this.setEmbedMessage(guildId);
     message.channel.send('', { embed });
   },
-  setEmbedMessage() {
+  async setEmbedMessage(guildId) {
     let embed = {
       type: 'rich',
       color: '#f9f504',
       title: `Boco's Music Playlist`,
     };
+    const playlist = await playlistDb.get(guildId);
     const list = playlist.list.length > 25 ? playlist.list.slice(0, 25) : playlist.list;
     if (playlist.playing) {
       const playing = list[0];

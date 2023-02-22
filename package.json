@@ -26,5 +26,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.9"
+  },
+  "nodemonConfig": {
+    "ignore": ["databases/*.json"],
+    "delay": 2500
   }
 }

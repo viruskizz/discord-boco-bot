@@ -1,7 +1,6 @@
 const ytdl = require('ytdl-core');
-const {selectedVideoInfo} = require('../../utils/transform.util');
 const { setEmbedMessage } = require('./list');
-const {playlist} = global;
+const playlistDb = require('../../databases/playlist');
 
 module.exports = {
   name: 'add',
@@ -9,15 +8,11 @@ module.exports = {
   usage: '<youtube url>',
   description: `Add music to Boco's music player`,
   async execute(message, args) {
+    const guildId = message.channel.guild.id;
     const youtubeUrl = args[0];
     if(!ytdl.validateURL(youtubeUrl)) { return; }
-    await this.addPlaylist(youtubeUrl);
-    let embed = setEmbedMessage();
+    await playlistDb.add(guildId, youtubeUrl);
+    let embed = await setEmbedMessage(guildId);
     message.channel.send('', { embed });
   },
-  async addPlaylist(youtubeUrl) {
-    let info = await ytdl.getBasicInfo(youtubeUrl)
-      .then(({videoDetails}) => selectedVideoInfo(videoDetails));
-    playlist.list.push(info);
-  }
 };
