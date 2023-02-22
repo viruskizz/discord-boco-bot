@@ -14,6 +14,6 @@ module.exports = {
     const playlist = await playlistDb.get(message.channel.guild.id);
     playlist.playing = false;
     playlist.list = [];
-    await playlist.update(message.channel.guild.id, playlist);
+    await playlistDb.update(message.channel.guild.id, playlist);
   },
 };
