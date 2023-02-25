@@ -55,9 +55,10 @@ module.exports = {
         );
       })
       .on('finish', () => {
-        playlistDb.update(guildId, playlist.list.slice(1));
+        playlist.list = playlist.list.slice(1)
+        playlistDb.update(guildId, playlist);
         if (playlist.list.length === 0) {
-        playlistDb.updatePlayState(false);
+          playlistDb.updatePlayState(false);
           message.member.voice.channel.leave();
         } else {
           this.playMusic(message, connection);

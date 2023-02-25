@@ -22,7 +22,15 @@ module.exports = {
     channel.join()
       .then(connection => {
         if(info.sound) {
-          const startStream = ytdl(info.sound, { filter: 'audioonly' });
+          const startStream = ytdl(info.soundl, {
+            filter: 'audioonly',
+            fmt: "mp3",
+            highWaterMark: 1 << 62,
+            liveBuffer: 1 << 62,
+            dlChunkSize: 0, //disabling chunking is recommended in discord bot
+            bitrate: 128,
+            quality: "lowestaudio",
+          });
           connection.play(startStream, streamOptions)
             .on('start', () => {
               this.showDescription(message, info);
